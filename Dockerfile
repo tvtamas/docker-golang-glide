@@ -1,6 +1,6 @@
 FROM golang:1.6.2
 
-MAINTAINER tvtamas
+MAINTAINER Tamás Török-Vistai <ttamas@gmail.com>
 
 ENV GLIDE_VERSION 0.10.2
 
@@ -11,3 +11,6 @@ RUN curl -fsSL "$GLIDE_DOWNLOAD_URL" -o glide.tar.gz \
     && mv linux-amd64/glide /usr/bin/ \
     && rm -r linux-amd64 \
     && rm glide.tar.gz
+
+RUN go get github.com/alecthomas/gometalinter && \
+    gometalinter --install --update
